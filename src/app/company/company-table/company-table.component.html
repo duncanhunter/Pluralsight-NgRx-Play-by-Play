@@ -1,0 +1,23 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let company of companies">
+      <td>{{company.name}}</td>
+      <td>{{company.email}}</td>
+      <td>{{company.phone}}</td>
+      <td class="company-row">
+        <button class="btn btn-default" [routerLink]="['/company/edit', company.id]">Edit</button>
+        <button class="btn btn-default" (click)="deleteCompany.next(company.id)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
