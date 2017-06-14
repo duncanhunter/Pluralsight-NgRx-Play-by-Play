@@ -15,7 +15,7 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 import { CompanyEffects } from './effects/company.effects';
-import { reducer } from './reducers';
+import { companyReducer } from './reducers/company.reducer';
 
 @NgModule({
   declarations: [
@@ -31,10 +31,9 @@ import { reducer } from './reducers';
     HttpModule,
     AppRoutingModule,
     MaterialModule,
-    StoreModule.provideStore(reducer),
-    StoreDevtoolsModule.instrumentOnlyWithExtension(),
-    EffectsModule.run(CompanyEffects)
-
+    StoreModule.provideStore({companies: companyReducer}),
+    EffectsModule.run(CompanyEffects),
+    StoreDevtoolsModule.instrumentOnlyWithExtension()
   ],
   providers: [
     CompanyService,

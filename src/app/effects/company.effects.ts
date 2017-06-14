@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { CompanyService } from '../company/company.service';
 import { Actions, Effect, toPayload } from '@ngrx/effects';
 import * as companyActions from './../actions/company.actions';
-import 'rxjs/Rx';
 import { DeleteCompanySuccessAction } from '../actions/company.actions';
 
 @Injectable()

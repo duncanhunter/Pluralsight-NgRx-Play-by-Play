@@ -4,9 +4,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { CompanyService } from '../company.service';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import * as fromRoot from './../../reducers'
 import * as companyActions from './../../actions/company.actions';
-import { SELECT_COMPANY } from '../../actions/company.actions';
+import { AppState } from './../../models/appState';
 
 @Component({
   selector: 'app-company-edit',
@@ -19,7 +18,7 @@ export class CompanyEditComponent implements OnInit {
   companyId: any;
 
   constructor(
-    private store: Store<fromRoot.State>,
+    private store: Store<AppState>,
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private companyService: CompanyService,
@@ -39,13 +38,13 @@ export class CompanyEditComponent implements OnInit {
   }
 
   getCompany() {
-    // this.companyService.getCompany(this.companyId)
-    //   .subscribe(company => this.companyForm.patchValue(company));
-    this.store.dispatch(new companyActions.SelectCompanyAction(this.companyId));
-    this.store.select(fromRoot.getSelectedCompany)
-      .do(console.log)
-      .filter(company => company != null)
+    this.companyService.getCompany(this.companyId)
       .subscribe(company => this.companyForm.patchValue(company));
+    // this.store.dispatch(new companyActions.SelectCompanyAction(this.companyId));
+    // this.store.select(fromRoot.getSelectedCompany)
+    //   .do(console.log)
+    //   .filter(company => company != null)
+    //   .subscribe(company => this.companyForm.patchValue(company));
  }
 
   buildForm() {

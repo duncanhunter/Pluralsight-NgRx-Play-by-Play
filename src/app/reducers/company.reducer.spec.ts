@@ -1,5 +1,4 @@
 import { reducer } from './company.reducer';
-import { Company } from '../company/company';
 import * as companyActions from './../actions/company.actions';
 
 describe(`companyReducer`, () => {
