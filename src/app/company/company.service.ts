@@ -3,7 +3,6 @@ import { Http, Response, RequestOptions, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { Company } from '../models';
 
-
 @Injectable()
 export class CompanyService {
 
