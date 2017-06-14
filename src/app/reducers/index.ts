@@ -1,7 +1,6 @@
 import { createSelector } from 'reselect';
 import { ActionReducer } from '@ngrx/store';
 import { compose } from '@ngrx/core/compose';
-import { storeFreeze } from 'ngrx-store-freeze';
 import { combineReducers } from '@ngrx/store';
 
 import * as fromCompanies from './company.reducer';
@@ -20,11 +19,6 @@ export function reducer(state: any, action: any) {
     return productionReducer(state, action);
 }
 
-// export const getBooksState = (state: State) => state.books;
+export const getCompaniesState = (state: State) => state.companies;
 
-
-//  export const getBookEntities = createSelector(getBooksState, fromBooks.getEntities);
-//  export const getBookIds = createSelector(getBooksState, fromBooks.getIds);
-//  export const getSelectedBookId = createSelector(getBooksState, fromBooks.getSelectedId);
-//  export const getSelectedBook = createSelector(getBooksState, fromBooks.getSelected);
-
+export const getSelectedCompany = createSelector(getCompaniesState, fromCompanies.getSelectedCompany);

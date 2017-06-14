@@ -3,6 +3,10 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 import { CompanyService } from '../company.service';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import * as fromRoot from './../../reducers'
+import * as companyActions from './../../actions/company.actions';
+import { SELECT_COMPANY } from '../../actions/company.actions';
 
 @Component({
   selector: 'app-company-edit',
@@ -15,6 +19,7 @@ export class CompanyEditComponent implements OnInit {
   companyId: any;
 
   constructor(
+    private store: Store<fromRoot.State>,
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private companyService: CompanyService,
@@ -26,17 +31,22 @@ export class CompanyEditComponent implements OnInit {
   ngOnInit() {
     this.companyId = this.activatedRoute.snapshot.params['id'];
     this.isNewCompany = this.companyId === 'new';
+    this.buildForm();
     if (!this.isNewCompany) {
       this.getCompany();
     }
 
-    this.buildForm();
   }
 
   getCompany() {
-    this.companyService.getCompany(this.companyId)
+    // this.companyService.getCompany(this.companyId)
+    //   .subscribe(company => this.companyForm.patchValue(company));
+    this.store.dispatch(new companyActions.SelectCompanyAction(this.companyId));
+    this.store.select(fromRoot.getSelectedCompany)
+      .do(console.log)
+      .filter(company => company != null)
       .subscribe(company => this.companyForm.patchValue(company));
-  }
+ }
 
   buildForm() {
     this.companyForm = this.fb.group({
