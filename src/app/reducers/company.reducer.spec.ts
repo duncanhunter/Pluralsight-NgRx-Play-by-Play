@@ -6,19 +6,21 @@ describe(`companyReducer`, () => {
 
     describe(`deleteCompanyAction`, () => {
 
-    it(`should delete a company`, () => {
-        const currentState = [
-            { id: 1, name: 'SSW' },
-            { id: 2, name: 'Microsoft' }
-        ];
-        const expectedResult = [
-            { id: 2, name: 'Microsoft' }
-        ];
+        it(`should delete a company`, () => {
+            const currentState = {
+                companies: [
+                    { id: 1, name: 'SSW', email: 'email', phone: 123 },
+                    { id: 2, name: 'Microsoft' , email: 'email', phone: 123 },
+                ]
+            };
+            const expectedResult = {
+                companies: [{ id: 2, name: 'Microsoft', email: 'email', phone: 123 }]
+            };
 
-        const action = new companyActions.DeleteCompanyAction(1);
-        const result = reducer(currentState, action);
-        expect(result).toEqual(expectedResult);
-    });
+            const action = new companyActions.DeleteCompanySuccessAction(1);
+            const result = reducer(currentState, action);
+            expect(result).toEqual(expectedResult);
+        });
 
     });
 });
