@@ -6,9 +6,9 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { CompanyService } from '../company.service';
 import { HttpModule } from '@angular/http';
 import 'rxjs/Rx';
-import { Company } from '../company';
 import { Observable } from 'rxjs/Observable';
 import { By } from '@angular/platform-browser';
+import { Company } from '../../models';
 
 xdescribe('CompanyListComponent', () => {
     let component: CompanyListComponent;

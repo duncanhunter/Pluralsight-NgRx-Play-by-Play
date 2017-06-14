@@ -1,11 +1,12 @@
 import { Action } from '@ngrx/store';
-import { Company } from '../company/company';
+import { Company } from '../models';
 
 export const LOAD_COMPANIES = '[Companies] Load Companies';
 export const LOAD_COMPANIES_SUCCESS = '[Companies] Load Companies Success';
-export const DELETE_COMPANY = '[Companies] Delete';
+export const DELETE_COMPANY = '[Companies] Delete Company';
+export const DELETE_COMPANY_SUCCESS = '[Companies] Delete Company Success';
+export const SELECT_COMPANY = '[Comapnies] Select Company';
 
-// {type: '', payload:''}
 export class LoadCompaniesAction implements Action {
     readonly type = LOAD_COMPANIES;
 
@@ -24,8 +25,22 @@ export class DeleteCompanyAction implements Action {
     constructor(public payload: number) { }
 }
 
+export class DeleteCompanySuccessAction implements Action {
+    readonly type = DELETE_COMPANY_SUCCESS;
+
+    constructor(public payload: number) { }
+}
+
+export class SelectCompanyAction implements Action {
+    readonly type = SELECT_COMPANY;
+
+    constructor(public payload: number) { }
+}
+
 export type Actions
     = LoadCompaniesAction
     | LoadCompaniesSuccessAction
-    | DeleteCompanyAction;
+    | DeleteCompanyAction
+    | DeleteCompanySuccessAction
+    | SelectCompanyAction
 

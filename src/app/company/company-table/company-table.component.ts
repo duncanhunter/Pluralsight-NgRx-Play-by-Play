@@ -1,8 +1,8 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { Company } from '../company';
+import { Company } from '../../models';
 
 @Component({
-  selector: 'fbc-company-table',
+  selector: 'app-company-table',
   templateUrl: './company-table.component.html',
   styleUrls: ['./company-table.component.scss']
 })

@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { CompanyStateService } from './company/company-state.service';
 
 @Component({
-  selector: 'fbc-root',
+  selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })

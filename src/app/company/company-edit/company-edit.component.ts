@@ -5,7 +5,7 @@ import { CompanyService } from '../company.service';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 
 @Component({
-  selector: 'fbc-company-edit',
+  selector: 'app-company-edit',
   templateUrl: './company-edit.component.html',
   styleUrls: ['./company-edit.component.scss']
 })
