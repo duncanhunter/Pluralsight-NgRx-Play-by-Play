@@ -22,7 +22,7 @@ export class CompanyEffects {
     // tslint:disable-next-line:member-ordering
     @Effect() deleteCompany$ = this.actions$
         .ofType(companyActions.DELETE_COMPANY)
-        .switchMap(action => {
+        .switchMap((action: companyActions.DeleteCompanyAction) => {
             return this.companyService.deleteCompany(action.payload)
                 .map(company => new companyActions.DeleteCompanySuccessAction(company.id));
         });

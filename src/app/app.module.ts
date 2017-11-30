@@ -31,9 +31,9 @@ import { companyReducer } from './reducers/company.reducer';
     HttpModule,
     AppRoutingModule,
     MaterialModule,
-    StoreModule.provideStore({companies: companyReducer}),
-    EffectsModule.run(CompanyEffects),
-    StoreDevtoolsModule.instrumentOnlyWithExtension()
+    StoreModule.forRoot({companies: companyReducer}),
+    EffectsModule.forRoot([CompanyEffects]),
+    StoreDevtoolsModule.instrument({maxAge: 25})
   ],
   providers: [
     CompanyService,
