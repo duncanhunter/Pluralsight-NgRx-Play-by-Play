@@ -3,6 +3,8 @@ import { CompanyService } from '../company.service';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 import { Company } from '../../models';
+import { AppState } from 'app/models/appState';
+import * as companyAcitons from './../../actions/company.actions';
 
 @Component({
   selector: 'app-company-list',
@@ -11,21 +13,21 @@ import { Company } from '../../models';
 })
 export class CompanyListComponent implements OnInit {
 
-  companies$: Observable<any>;
+  companies$: Observable<Company[]>;
 
-  constructor(private companyService: CompanyService) { }
+  constructor(private store: Store<AppState>) { }
 
   ngOnInit() {
-    this.getCompanies();
+    this.loadCompanies();
+    this.companies$ = this.store.select(state => state.companies.companies);
   }
 
-  getCompanies() {
-    this.companies$ = this.companyService.getCompanies();
+  loadCompanies() {
+    this.store.dispatch(new companyAcitons.LoadCompaniesAction());
   }
 
   deleteCompany(companyId: number) {
-    this.companyService.deleteCompany(companyId)
-    .subscribe(() => this.getCompanies());
+    this.store.dispatch(new companyAcitons.DeleteCompanyAction(companyId));
   }
 
 }
