@@ -1,4 +1,4 @@
-import { reducer } from './company.reducer';
+import { companyReducer } from './company.reducer';
 import * as companyActions from './../actions/company.actions';
 
 describe(`companyReducer`, () => {
@@ -17,7 +17,7 @@ describe(`companyReducer`, () => {
             };
 
             const action = new companyActions.DeleteCompanySuccessAction(1);
-            const result = reducer(currentState, action);
+            const result = companyReducer(currentState, action);
             expect(result).toEqual(expectedResult);
         });
 
