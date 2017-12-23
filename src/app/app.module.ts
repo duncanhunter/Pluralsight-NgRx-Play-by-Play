@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { MaterialModule } from '@angular/material';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CompanyListComponent } from './company/company-list/company-list.component';
@@ -30,7 +29,6 @@ import { companyReducer } from './reducers/company.reducer';
     ReactiveFormsModule,
     HttpModule,
     AppRoutingModule,
-    MaterialModule,
     StoreModule.forRoot({companies: companyReducer}),
     EffectsModule.forRoot([CompanyEffects]),
     StoreDevtoolsModule.instrument({maxAge: 25})
