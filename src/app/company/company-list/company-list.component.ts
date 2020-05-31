@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { CompanyService } from '../company.service';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { Company } from '../../models';
 import { AppState } from 'app/models/appState';
-import * as companyAcitons from './../../actions/company.actions';
+import * as companyActions from './../../actions/company.actions';
 
 @Component({
   selector: 'app-company-list',
@@ -23,11 +22,11 @@ export class CompanyListComponent implements OnInit {
   }
 
   loadCompanies() {
-    this.store.dispatch(new companyAcitons.LoadCompaniesAction());
+    this.store.dispatch(new companyActions.LoadCompaniesAction());
   }
 
   deleteCompany(companyId: number) {
-    this.store.dispatch(new companyAcitons.DeleteCompanyAction(companyId));
+    this.store.dispatch(new companyActions.DeleteCompanyAction(companyId));
   }
 
 }

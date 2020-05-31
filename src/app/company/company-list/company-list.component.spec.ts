@@ -6,7 +6,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { CompanyService } from '../company.service';
 import { HttpModule } from '@angular/http';
 import 'rxjs/Rx';
-import { Observable } from 'rxjs/Observable';
+import { Observable, of } from 'rxjs';
 import { By } from '@angular/platform-browser';
 import { Company } from '../../models';
 
@@ -21,7 +21,7 @@ xdescribe('CompanyListComponent', () => {
     beforeEach(async(() => {
 
         const companyServiceStub = {
-            getCompanies: () => Observable.of([fakeCompany, fakeCompany])
+            getCompanies: () => of([fakeCompany, fakeCompany])
         };
 
         TestBed.configureTestingModule({
@@ -42,12 +42,12 @@ xdescribe('CompanyListComponent', () => {
     });
 
     it('should create', () => {
-        const spy = spyOn(companyService, 'getCompanies').and.returnValue(Observable.of(fakeCompany));
+        const spy = spyOn(companyService, 'getCompanies').and.returnValue(of(fakeCompany));
         expect(component).toBeTruthy();
     });
 
     it(`should  have a inital item in the template`, (done) => {
-        const spy = spyOn(companyService, 'getCompanies').and.returnValue(Observable.of([fakeCompany]));
+        const spy = spyOn(companyService, 'getCompanies').and.returnValue(of([fakeCompany]));
 
         fixture.detectChanges();
         component.companies$.subscribe(c => {
@@ -61,7 +61,7 @@ xdescribe('CompanyListComponent', () => {
     });
 
     it(`should  have a inital item in the template`, async(() => {
-        spyOn(companyService, 'getCompanies').and.returnValue(Observable.of([fakeCompany, fakeCompany]));
+        spyOn(companyService, 'getCompanies').and.returnValue(of([fakeCompany, fakeCompany]));
 
         fixture.detectChanges();
         // expect(companyService.getCompanies).toHaveBeenCalledTimes(1);
